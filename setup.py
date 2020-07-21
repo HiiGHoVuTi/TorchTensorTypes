@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="torch-tensor-type", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Maxime",
     author_email="himyundevacc@gmail.com",
     description="Practical Pipelining for pyTorch",
