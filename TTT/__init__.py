@@ -6,11 +6,12 @@ import torch.functional as F
 
 # %%
 class TensorType():
-    def __init__(self, shape=None, transforms=[], 
+    def __init__(self, shape=None, transforms=[], torch_methods=[],
     to_batch=False, device=None, from_single_value=False,
     random_values=False, to_numpy=False, detach=False,
     first_pipeline=None, second_pipeline=None):
         self.shape = shape
+        self.torch_methods = torch_methods
         self.transforms = transforms
         self.to_batch = to_batch
         self.device = device
@@ -38,6 +39,8 @@ class TensorType():
             x = x.to(self.device)
         if self.to_numpy:
             x = x.numpy()
+        for m in self.torch_methods:
+            getattr(x, m)()
         for t in self.transforms:
             x = t(x)
         return x
