@@ -25,13 +25,14 @@ Description:
         ### The list of arguments to the constructor is:
         ```py
         TensorType:
-        __init__(shape=None, transforms=[],
+        __init__(shape=None, transforms=[], torch_methods=[],
         to_batch=False, device=None, from_single_value=False,
         random_values=False, to_numpy=False, detach=False):
         ```
         All of these should be pretty telling by their name, if you know pyTorch.
         - `TensorType.shape`: the input will be viewed as this shape
         - `TensorType.transforms`: a list of functions that will be applied at the end
+        - `TensorType.torch_methods`: a list of method names that will be called on the tensor i.e `"mean" => tensor.mean()`
         - `TorchType.to_batch`: will unsqueeze the data into a batch with a single sample
         - `TorchType.device`: transfers the tensor to a device
         - `TorchType.from_single_value`: creates a uniform tensor from a single value
